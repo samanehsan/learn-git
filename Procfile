@@ -1,1 +1,1 @@
-web: python spark_github/web.py
+web: python web.py
