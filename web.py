@@ -38,6 +38,7 @@ def get_tweets():
 
     number_of_tweets = choose_number_of_tweets()
 
+    tweets = tweepy.Cursor(api.search, q='#spark')
     return tweets.items(limit=number_of_tweets)
 
 
