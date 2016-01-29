@@ -18,15 +18,18 @@ def home_page():
     return 'Hello from the SPARK learn-a-thon!'
 
 
-def get_instagram_image():
+def get_instagram_images():
     instagram_api_url = 'https://api.instagram.com/v1/tags/spark/media/recent?client_id={}'.format(settings.CLIENT_ID)
 
     data = requests.get(instagram_api_url).json()['data']
     number_of_images = choose_number_of_images()
 
     images_returned = []
-    for image in number_of_images:
-        images_returned.append(random.choice(data)['images']['low_resolution']['url'])
+    for image in range(0, number_of_images):
+        choice = random.choice(data)
+        img_url = choice['link']
+        image = choice['images']['low_resolution']['url']
+        images_returned.append((img_url, image))
 
     return images_returned
 
@@ -58,4 +61,4 @@ def choose_number_of_tweets():
 if __name__ == '__main__':
     # port = int(os.environ.get("PORT", 5000))
     # app.run(host='0.0.0.0', port=port)
-    get_tweets()
+    get_instagram_images()
