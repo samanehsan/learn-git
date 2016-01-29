@@ -1,5 +1,5 @@
-""" 
-Heroku/Python Quickstart: 
+"""
+Heroku/Python Quickstart:
 https://blog.heroku.com/archives/2011/9/28/python_and_django
 """
 
@@ -20,8 +20,8 @@ def home_page():
     twitter_pics = get_tweets()
 
     return render_template(
-        'home.html', name='main', 
-        instagram_pics=instagram_pics, 
+        'home.html', name='main',
+        instagram_pics=instagram_pics,
         twitter_pics=twitter_pics,
     )
 
@@ -38,7 +38,6 @@ def get_instagram_images():
     for image in images:
         image_url = image['images']['low_resolution']['url']
         images_returned.append((image_url, image['link']))
-
 
     return images_returned
 
@@ -81,4 +80,3 @@ def choose_number_of_tweets():
 if __name__ == '__main__':
     port = int(os.environ.get("PORT", 5000))
     app.run(port=port, debug=True)
-
