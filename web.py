@@ -46,7 +46,10 @@ def choose_random_unique_items(my_list, number_of_images):
     """ Given a list of items, return a random element of that list.
     Only return the item if we haven't seen it before!
     """
-    return random.sample(my_list, number_of_images)
+    if number_of_images <= len(my_list):
+        return random.sample(my_list, number_of_images)
+    else:
+        return my_list
 
 
 def choose_a_unique_item(my_list):
