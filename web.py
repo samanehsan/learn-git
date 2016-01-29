@@ -47,7 +47,10 @@ def get_tweets():
     number_of_tweets = choose_number_of_tweets()
 
     tweets = tweepy.Cursor(api.search, q='#spark')
-    return tweets.items(limit=number_of_tweets)
+
+    tweets_html = [api.get_oembed(tweet.id)['html'] for tweet in list(tweets.items(limit=number_of_tweets))]
+
+    return tweets_html
 
 
 def choose_number_of_images():
