@@ -1,21 +1,29 @@
-""" Heroku/Python Quickstart: https://blog.heroku.com/archives/2011/9/28/python_and_django"""
+""" 
+Heroku/Python Quickstart: 
+https://blog.heroku.com/archives/2011/9/28/python_and_django
+"""
 
 import os
 import random
 import requests
-from flask import Flask
-
 import tweepy
+from flask import Flask, render_template
 
 import settings
-
 
 app = Flask(__name__)
 
 
 @app.route('/')
 def home_page():
-    return 'Hello from the SPARK learn-a-thon!'
+    instagram_pics = get_instagram_images()
+    twitter_pics = get_tweets()
+
+    return render_template(
+        'home.html', name='main', 
+        instagram_pics=instagram_pics, 
+        twitter_pics=twitter_pics,
+    )
 
 
 def get_instagram_images():
@@ -30,6 +38,7 @@ def get_instagram_images():
     for image in images:
         image_url = image['images']['low_resolution']['url']
         images_returned.append((image_url, image['link']))
+
 
     return images_returned
 
@@ -71,4 +80,5 @@ def choose_number_of_tweets():
 
 if __name__ == '__main__':
     port = int(os.environ.get("PORT", 5000))
-    app.run(host='0.0.0.0', port=port)
+    app.run(port=port, debug=True)
+
