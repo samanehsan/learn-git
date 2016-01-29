@@ -25,9 +25,21 @@ def home_page():
         twitter_pics=twitter_pics,
     )
 
+@app.route('/<hashtag>')
+def hashtag_pages(hashtag):
+    instagram_pics = get_instagram_images(hashtag)
+    twitter_pics = get_tweets(hashtag)
 
-def get_instagram_images():
-    instagram_api_url = 'https://api.instagram.com/v1/tags/spark/media/recent?client_id={}'.format(settings.CLIENT_ID)
+    return render_template(
+        'home.html', name='main', 
+        instagram_pics=instagram_pics, 
+        twitter_pics=twitter_pics,
+    )
+
+
+
+def get_instagram_images(hashtag='spark'):
+    instagram_api_url = 'https://api.instagram.com/v1/tags/{}/media/recent?client_id={}'.format(hashtag, settings.CLIENT_ID)
 
     data = requests.get(instagram_api_url).json()['data']
     number_of_images = choose_number_of_images()
@@ -49,14 +61,14 @@ def choose_a_random_item(list):
     return random.choice(list)
 
 
-def get_tweets():
+def get_tweets(hashtag='spark'):
     auth = tweepy.OAuthHandler(settings.CONSUMER_KEY, settings.CONSUMER_SECRET)
     auth.set_access_token(settings.ACCESS_KEY, settings.ACCESS_SECRET)
     api = tweepy.API(auth)
 
     number_of_tweets = choose_number_of_tweets()
 
-    tweets = tweepy.Cursor(api.search, q='#spark')
+    tweets = tweepy.Cursor(api.search, q='#{}'.format(hashtag))
 
     tweets_html = [api.get_oembed(tweet.id)['html'] for tweet in list(tweets.items(limit=number_of_tweets))]
 
