@@ -18,6 +18,7 @@ app = Flask(__name__)
 def home_page():
     instagram_pics = get_instagram_image()
     twitter_pics = get_tweets()
+    import ipdb; ipdb.set_trace()
     return render_template(
         'home.html', name='main', 
         instagram_pics=instagram_pics, 
@@ -45,12 +46,7 @@ def get_tweets():
 
     number_of_tweets = choose_number_of_tweets()
 
-    tweets_text = []
-    tweets = tweepy.Cursor(api.search, q='#spark')
-    for tweet in tweets.items(limit=number_of_tweets):
-        tweets_text.append(tweet.text)
-
-    return tweets_text
+    return tweets.items(limit=number_of_tweets)
 
 
 def choose_number_of_images():
