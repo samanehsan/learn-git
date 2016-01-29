@@ -34,13 +34,19 @@ def get_instagram_images():
 
     images_returned = []
     for image in range(0, number_of_images):
-        choice = random.choice(data)
+        choice = choose_a_random_item(data)
         img_url = choice['link']
         image = choice['images']['low_resolution']['url']
         images_returned.append((img_url, image))
 
 
     return images_returned
+
+
+def choose_a_random_item(list):
+    """ Given a list of items, return a random element of that list
+    """
+    return random.choice(list)
 
 
 def get_tweets():
@@ -70,3 +76,4 @@ def choose_number_of_tweets():
 if __name__ == '__main__':
     port = int(os.environ.get("PORT", 5000))
     app.run(port=port, debug=True)
+
