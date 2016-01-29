@@ -16,7 +16,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def home_page():
-    instagram_pics = get_instagram_image()
+    instagram_pics = get_instagram_images()
     twitter_pics = get_tweets()
 
     return render_template(
@@ -26,7 +26,7 @@ def home_page():
     )
 
 
-def get_instagram_image():
+def get_instagram_images():
     instagram_api_url = 'https://api.instagram.com/v1/tags/spark/media/recent?client_id={}'.format(settings.CLIENT_ID)
 
     data = requests.get(instagram_api_url).json()['data']
@@ -34,7 +34,11 @@ def get_instagram_image():
 
     images_returned = []
     for image in range(0, number_of_images):
-        images_returned.append(random.choice(data)['images']['low_resolution']['url'])
+        choice = random.choice(data)
+        img_url = choice['link']
+        image = choice['images']['low_resolution']['url']
+        images_returned.append((img_url, image))
+
 
     return images_returned
 
