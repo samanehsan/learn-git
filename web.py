@@ -27,7 +27,7 @@ def home_page():
 
 
 def get_instagram_images():
-    instagram_api_url = 'https://api.instagram.com/v1/tags/spark/media/recent?client_id={}'.format(settings.CLIENT_ID)
+    instagram_api_url = 'https://api.instagram.com/v1/tags/sparkhackathon/media/recent?client_id={}'.format(settings.CLIENT_ID)
 
     data = requests.get(instagram_api_url).json()['data']
     number_of_images = choose_number_of_images()
@@ -60,7 +60,7 @@ def get_tweets():
 
     number_of_tweets = choose_number_of_tweets()
 
-    tweets = tweepy.Cursor(api.search, q='#spark')
+    tweets = tweepy.Cursor(api.search, q='#sparkhackathon')
 
     tweets_html = [api.get_oembed(tweet.id)['html'] for tweet in list(tweets.items(limit=number_of_tweets))]
 
