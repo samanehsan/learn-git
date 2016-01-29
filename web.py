@@ -38,12 +38,7 @@ def get_tweets():
 
     number_of_tweets = choose_number_of_tweets()
 
-    tweets_text = []
-    tweets = tweepy.Cursor(api.search, q='#spark')
-    for tweet in tweets.items(limit=number_of_tweets):
-        tweets_text.append(tweet.text)
-
-    return tweets_text
+    return tweets.items(limit=number_of_tweets)
 
 
 def choose_number_of_images():
@@ -57,5 +52,6 @@ def choose_number_of_tweets():
 
 
 if __name__ == '__main__':
-    port = int(os.environ.get("PORT", 5000))
-    app.run(host='0.0.0.0', port=port)
+    # port = int(os.environ.get("PORT", 5000))
+    # app.run(host='0.0.0.0', port=port)
+
