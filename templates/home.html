@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<title>Sparkd</title>
+        <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
+        <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+		<!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+		<!-- Optional theme -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+		<!-- Latest compiled and minified JavaScript -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+	</head>
+
+	<body>
+
+	<div class="well">
+		<h1>SPARKD</h1>
+	</div>
+	<div class="well" style="margin:25px;">
+		<h2>INSTAGRAM</h2>
+		<div style="text-align:center">
+			<div class="row">
+			{% for p in instagram_pics %}
+				<div class="col-sm-4"><h2>{{p}}</h2></div>
+			{% endfor %}
+			</div>
+
+		</div>
+	</div>
+	<div class="well" style="margin:25px;">
+		<h2>TWITTER</h2>
+		<div style="text-align:center">
+		{% for p in twitter_pics %}
+			<h2>{{p}}</h2>
+		{% endfor %}
+	</div>
+	</body>
+
+</html>
