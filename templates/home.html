@@ -25,7 +25,7 @@
 		<div style="text-align:center">
 			<div class="row">
 			{% for p in instagram_pics %}
-				<div class="col-sm-4"><h2>{{p}}</h2></div>
+				<div class="col-sm-4"><img src={{p}}></div>
 			{% endfor %}
 			</div>
 
@@ -34,9 +34,14 @@
 	<div class="well" style="margin:25px;">
 		<h2>TWITTER</h2>
 		<div style="text-align:center">
-		{% for p in twitter_pics %}
-			<h2>{{p}}</h2>
-		{% endfor %}
+		<div class="row">
+			{% for p in twitter_pics %}
+				<div class="col-sm-4"><p>{{p}}</p></div>
+			{% endfor %}
+			<!--
+			<blockquote class="twitter-tweet" lang="en"><p lang="en" dir="ltr">Just buy <a href="https://twitter.com/search?q=%24watt&amp;src=ctag">$watt</a> <a href="https://t.co/hzfh0YKoef">https://t.co/hzfh0YKoef</a></p>&mdash; Roshan Mirajkar  (@RadiantRosh) <a href="https://twitter.com/RadiantRosh/status/692917387218264064">January 29, 2016</a></blockquote>
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script> -->
+		</div>
 	</div>
 	</body>
 
