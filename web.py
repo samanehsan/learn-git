@@ -24,20 +24,25 @@ def get_instagram_images():
     data = requests.get(instagram_api_url).json()['data']
     number_of_images = choose_number_of_images()
 
+    images = choose_random_unique_items(data, number_of_images)
+
     images_returned = []
-    for image in range(0, number_of_images):
-        choice = choose_a_random_item(data)
-        img_url = choice['link']
-        image = choice['images']['low_resolution']['url']
-        images_returned.append((img_url, image))
+    for image in images:
+        image_url = image['images']['low_resolution']['url']
+        images_returned.append((image_url, image['link']))
 
     return images_returned
 
 
-def choose_a_random_item(list):
-    """ Given a list of items, return a random element of that list
+def choose_random_unique_items(my_list, number_of_images):
+    """ Given a list of items, return a random element of that list.
+    Only return the item if we haven't seen it before!
     """
-    return random.choice(list)
+    return random.sample(my_list, number_of_images)
+
+
+def choose_a_unique_item(my_list):
+    return random.choice(my_list)
 
 
 def get_tweets():
