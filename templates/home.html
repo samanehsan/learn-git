@@ -31,7 +31,7 @@
 				<div style="text-align:center">
 					<div class="row">
 					{% for p in instagram_pics %}
-						<div class="col-sm-4" style="padding-top: 15px"><img src={{p}}></div>
+						<div class="col-sm-4" style="padding-top: 15px"><a href={{p[0]}}><img src={{p[1]}}></a></div>
 					{% endfor %}
 					</div>
 				</div>
@@ -41,7 +41,7 @@
 				<div style="text-align:center">
 					<div class="row">
 						{% for p in twitter_pics %}
-						<div class="col-sm-4">{{p}}</div>
+						<div class="col-sm-4">{{p|safe}}</div>
 						{% endfor %}
 					</div>
 				</div>

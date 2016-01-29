@@ -54,7 +54,7 @@ def get_tweets():
 
 
 def choose_number_of_images():
-    number = 30
+    number = 3
     return number
 
 
