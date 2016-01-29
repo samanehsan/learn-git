@@ -37,7 +37,7 @@ def get_instagram_images():
     images_returned = []
     for image in images:
         image_url = image['images']['low_resolution']['url']
-        images_returned.append((image_url, image['link']))
+        images_returned.append((image['link'], image_url))
 
     return images_returned
 
