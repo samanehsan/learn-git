@@ -18,7 +18,7 @@ app = Flask(__name__)
 def home_page():
     instagram_pics = get_instagram_image()
     twitter_pics = get_tweets()
-    import ipdb; ipdb.set_trace()
+
     return render_template(
         'home.html', name='main', 
         instagram_pics=instagram_pics, 
@@ -51,7 +51,7 @@ def get_tweets():
 
 
 def choose_number_of_images():
-    number = 3
+    number = 30
     return number
 
 
