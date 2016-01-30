@@ -4,7 +4,7 @@ need to make this website work!
 
 ## Import python libraries we need up here.
 
-
+import requests
 
 ###############################################
 ###             Problem One!                ###
@@ -57,4 +57,5 @@ def get_api_content(api_url):
     """ Modify this function to use a commmon python library to go to an api_url (get it!) and give you
     back what it finds. Request the site, and get its contents. Hint Hint.
     """
-    return ??
+	return requests.get(api_url)
+
