@@ -40,7 +40,7 @@ def hashtag_pages(hashtag):
 '''
 
 
-def get_instagram_images(hashtag='spark'):
+def get_instagram_images(hashtag='sparkhackathon'):
     instagram_api_url = 'https://api.instagram.com/v1/tags/{}/media/recent?client_id={}'.format(hashtag, settings.CLIENT_ID)
 
     requested_website = get_api_content(instagram_api_url)
