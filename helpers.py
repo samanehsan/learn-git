@@ -33,7 +33,7 @@ def choose_number_of_images():
     you want to appear on the site at a time! Because of how the instagram API works,
     it won't return more than 20 photos at once.
     """
-    number = ??
+    number = 20
     return number
 
 
