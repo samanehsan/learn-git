@@ -1,5 +1,5 @@
-""" 
-Heroku/Python Quickstart: 
+"""
+Heroku/Python Quickstart:
 https://blog.heroku.com/archives/2011/9/28/python_and_django
 """
 
@@ -20,22 +20,24 @@ def home_page():
     twitter_pics = get_tweets()
 
     return render_template(
-        'home.html', name='main', 
-        instagram_pics=instagram_pics, 
+        'home.html', name='main',
+        instagram_pics=instagram_pics,
         twitter_pics=twitter_pics,
     )
 
+'''
 @app.route('/<hashtag>')
 def hashtag_pages(hashtag):
     instagram_pics = get_instagram_images(hashtag)
     twitter_pics = get_tweets(hashtag)
+
 
     return render_template(
         'home.html', name='main', 
         instagram_pics=instagram_pics, 
         twitter_pics=twitter_pics,
     )
-
+'''
 
 
 def get_instagram_images(hashtag='spark'):
@@ -44,29 +46,37 @@ def get_instagram_images(hashtag='spark'):
     data = requests.get(instagram_api_url).json()['data']
     number_of_images = choose_number_of_images()
 
-    images_returned = []
-    for image in range(0, number_of_images):
-        choice = choose_a_random_item(data)
-        img_url = choice['link']
-        image = choice['images']['low_resolution']['url']
-        images_returned.append((img_url, image))
+    images = choose_random_unique_items(data, number_of_images)
 
+    images_returned = []
+    for image in images:
+        image_url = image['images']['low_resolution']['url']
+        images_returned.append((image['link'], image_url))
 
     return images_returned
 
 
-def choose_a_random_item(list):
-    """ Given a list of items, return a random element of that list
+def choose_random_unique_items(my_list, number_of_images):
+    """ Given a list of items, return a random element of that list.
+    Only return the item if we haven't seen it before!
     """
-    return random.choice(list)
+    if number_of_images <= len(my_list):
+        return random.sample(my_list, number_of_images)
+    else:
+        return my_list
 
 
-def get_tweets(hashtag='spark'):
+def choose_a_unique_item(my_list):
+    return random.choice(my_list)
+
+
+def get_tweets(hashtag='sparkhackathon'):
     auth = tweepy.OAuthHandler(settings.CONSUMER_KEY, settings.CONSUMER_SECRET)
     auth.set_access_token(settings.ACCESS_KEY, settings.ACCESS_SECRET)
     api = tweepy.API(auth)
 
     number_of_tweets = choose_number_of_tweets()
+
 
     tweets = tweepy.Cursor(api.search, q='#{}'.format(hashtag))
 
@@ -87,5 +97,4 @@ def choose_number_of_tweets():
 
 if __name__ == '__main__':
     port = int(os.environ.get("PORT", 5000))
-    app.run(port=port, debug=True)
-
+    app.run(host='0.0.0.0', port=port, debug=True)
