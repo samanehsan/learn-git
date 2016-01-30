@@ -18,7 +18,7 @@ def choose_random_unique_items(my_list, number_of_images):
         # This is the case if our hashtag has enough images to meet our number request
         # figure out the one line that we can return that will give us a random member of the
         # list, with no repeats.
-        return ???
+        return ?????
     else:
         ## If we ask for more images that we have, then just return everything there is
         return my_list
