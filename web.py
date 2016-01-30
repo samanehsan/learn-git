@@ -4,10 +4,10 @@ https://blog.heroku.com/archives/2011/9/28/python_and_django
 """
 
 import os
-import random
-import requests
 import tweepy
 from flask import Flask, render_template
+
+from helpers import choose_number_of_images, choose_number_of_tweets, choose_random_unique_items, get_api_content
 
 import settings
 
@@ -29,7 +29,9 @@ def home_page():
 def get_instagram_images():
     instagram_api_url = 'https://api.instagram.com/v1/tags/sparkhackathon/media/recent?client_id={}'.format(settings.CLIENT_ID)
 
-    data = requests.get(instagram_api_url).json()['data']
+    requested_website = get_api_content(instagram_api_url)
+
+    data = requested_website.json()['data']
     number_of_images = choose_number_of_images()
 
     images = choose_random_unique_items(data, number_of_images)
@@ -42,42 +44,17 @@ def get_instagram_images():
     return images_returned
 
 
-def choose_random_unique_items(my_list, number_of_images):
-    """ Given a list of items, return a random element of that list.
-    Only return the item if we haven't seen it before!
-    """
-    if number_of_images <= len(my_list):
-        return random.sample(my_list, number_of_images)
-    else:
-        return my_list
-
-
-def choose_a_unique_item(my_list):
-    return random.choice(my_list)
-
-
 def get_tweets():
     auth = tweepy.OAuthHandler(settings.CONSUMER_KEY, settings.CONSUMER_SECRET)
     auth.set_access_token(settings.ACCESS_KEY, settings.ACCESS_SECRET)
     api = tweepy.API(auth)
+    tweets = tweepy.Cursor(api.search, q='#sparkhackathon')
 
     number_of_tweets = choose_number_of_tweets()
-
-    tweets = tweepy.Cursor(api.search, q='#sparkhackathon')
 
     tweets_html = [api.get_oembed(tweet.id)['html'] for tweet in list(tweets.items(limit=number_of_tweets))]
 
     return tweets_html
-
-
-def choose_number_of_images():
-    number = 3
-    return number
-
-
-def choose_number_of_tweets():
-    number = 3
-    return number
 
 
 if __name__ == '__main__':
