@@ -14,6 +14,11 @@ import settings
 app = Flask(__name__)
 
 
+@app.route('/map')
+def map():
+    return render_template('example.html', name='main')
+
+
 @app.route('/')
 def home_page():
     instagram_pics = get_instagram_images()
