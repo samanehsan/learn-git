@@ -5,9 +5,6 @@ need to make this website work!
 ## Import python libraries we need up here.
 
 
-import requests
-
-import random
 
 ###############################################
 ###             Problem One!                ###
@@ -21,7 +18,7 @@ def choose_random_unique_items(my_list, number_of_images):
         # This is the case if our hashtag has enough images to meet our number request
         # figure out the one line that we can return that will give us a random member of the
         # list, with no repeats.
-        return random.sample(my_list, 1)
+        return ?????
     else:
         ## If we ask for more images that we have, then just return everything there is
         return my_list
@@ -36,7 +33,7 @@ def choose_number_of_images():
     you want to appear on the site at a time! Because of how the instagram API works,
     it won't return more than 20 photos at once.
     """
-    number = 20
+    number = ??
     return number
 
 
@@ -48,7 +45,7 @@ def choose_number_of_tweets():
     """ Modify this function to return a number of tweets
     you want to appear on the site at a time!
     """
-    number = 5
+    number = ??
     return number
 
 
@@ -60,5 +57,4 @@ def get_api_content(api_url):
     """ Modify this function to use a commmon python library to go to an api_url (get it!) and give you
     back what it finds. Request the site, and get its contents. Hint Hint.
     """
-    return requests.get(api_url)
-
+    return ??
