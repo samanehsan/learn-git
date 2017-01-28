@@ -15,7 +15,7 @@ def get_city_coordinates():
     and fill in the information below
     """
     lattitude = 38.0293
-    longitude = 78.4767
+    longitude = -78.4767
 
     return lattitude, longitude
 
