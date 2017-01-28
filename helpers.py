@@ -14,8 +14,8 @@ def get_city_coordinates():
     """Find the GPS coordinates for Charlottesville,
     and fill in the information below
     """
-    lattitude = ???
-    longitude = ???
+    lattitude = 38.0293
+    longitude = 78.4767
 
     return lattitude, longitude
 
