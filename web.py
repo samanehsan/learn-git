@@ -5,11 +5,11 @@ https://blog.heroku.com/archives/2011/9/28/python_and_django
 
 import os
 import tweepy
+import requests
 from flask import Flask, render_template
 
 from helpers import(
     choose_number_of_tweets,
-    get_api_content,
     get_city_coordinates,
     get_icon_size,
     choose_hashtag
@@ -56,7 +56,7 @@ def get_weather():
         longitude,
         settings.WEATHER_API_KEY
     )
-    weather_api_data = get_api_content(weather_url).json()
+    weather_api_data = requests.get(weather_url).json()
 
     return {
         'city': weather_api_data['name'],
