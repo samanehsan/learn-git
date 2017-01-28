@@ -49,6 +49,15 @@ def choose_number_of_tweets():
 ###############################################
 
 def choose_hashtag():
-    """ Modify this function to use return the hashtah #sparkhackathon
+    """ Modify this function to use return the hashtag #sparkhackathon
     """
+    hashtag = "#sparkhackathon"
     return hashtag
+
+
+
+
+
+
+
+
