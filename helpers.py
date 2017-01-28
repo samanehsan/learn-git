@@ -13,31 +13,26 @@ import random
 ###             Problem One!                ###
 ###############################################
 
-def choose_random_unique_items(my_list, number_of_images):
-    """ Given a list of items, return a *random* element of that list.
-    Only return the item if we haven't seen it before! Get a sample. A random sample.
+def get_city_coordinates():
+    """Find the GPS coordinates for Charlottesville,
+    and fill in the information below
     """
-    if number_of_images <= len(my_list):
-        # This is the case if our hashtag has enough images to meet our number request
-        # figure out the one line that we can return that will give us a random member of the
-        # list, with no repeats.
-        return random.sample(my_list, 1)
-    else:
-        ## If we ask for more images that we have, then just return everything there is
-        return my_list
+    lattitude = 38.0293
+    longitude = -78.4767
 
+    return lattitude, longitude
 
 ###############################################
 ###             Problem Two!                ###
 ###############################################
 
-def choose_number_of_images():
+def get_icon_size():
     """ Modify this function to return a number of instagram photos
     you want to appear on the site at a time! Because of how the instagram API works,
     it won't return more than 20 photos at once.
     """
-    number = 20
-    return number
+    size = 100
+    return size
 
 
 ###############################################
@@ -48,7 +43,7 @@ def choose_number_of_tweets():
     """ Modify this function to return a number of tweets
     you want to appear on the site at a time!
     """
-    number = 5
+    number = 10
     return number
 
 
@@ -61,4 +56,3 @@ def get_api_content(api_url):
     back what it finds. Request the site, and get its contents. Hint Hint.
     """
     return requests.get(api_url)
-
