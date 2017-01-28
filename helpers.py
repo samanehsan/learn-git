@@ -28,7 +28,7 @@ def get_icon_size():
     you want to appear on the site at a time! Because of how the instagram API works,
     it won't return more than 20 photos at once.
     """
-    size = ???
+    size = 200
     return size
 
 
