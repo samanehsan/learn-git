@@ -11,7 +11,8 @@ from helpers import(
     choose_number_of_tweets,
     get_api_content,
     get_city_coordinates,
-    get_icon_size
+    get_icon_size,
+    choose_hashtag
 )
 
 import settings
@@ -29,6 +30,20 @@ def home_page():
         weather_data=weather_data,
         twitter_pics=twitter_pics,
     )
+
+'''
+@app.route('/<hashtag>')
+def hashtag_pages(hashtag):
+    instagram_pics = get_instagram_images(hashtag)
+    twitter_pics = get_tweets(hashtag)
+
+
+    return render_template(
+        'home.html', name='main',
+        instagram_pics=instagram_pics,
+        twitter_pics=twitter_pics,
+    )
+'''
 
 
 def get_weather():
@@ -56,7 +71,7 @@ def get_tweets():
     auth = tweepy.OAuthHandler(settings.CONSUMER_KEY, settings.CONSUMER_SECRET)
     auth.set_access_token(settings.ACCESS_KEY, settings.ACCESS_SECRET)
     api = tweepy.API(auth)
-    tweets = tweepy.Cursor(api.search, q='#Cvilletech')
+    tweets = tweepy.Cursor(api.search, q=choose_hashtag())
 
     number_of_tweets = choose_number_of_tweets()
 

@@ -1,13 +1,10 @@
 """ A bunch of helper functions that, when fixed up, will return the things we
-need to make this website work!
+need to make this website work! These functions use the weather and twitter APIs!!!
 """
 
 ## Import python libraries we need up here.
 
 
-import requests
-
-import random
 
 ###############################################
 ###             Problem One!                ###
@@ -40,10 +37,9 @@ def get_icon_size():
 ###############################################
 
 def choose_number_of_tweets():
-    """ Modify this function to return a number of tweets
+    """ Modify this function to return the max number of tweets
     you want to appear on the site at a time!
     """
-    number = 10
     return number
 
 
@@ -51,8 +47,7 @@ def choose_number_of_tweets():
 ###             Problem Four!              ###
 ###############################################
 
-def get_api_content(api_url):
-    """ Modify this function to use a commmon python library to go to an api_url (get it!) and give you
-    back what it finds. Request the site, and get its contents. Hint Hint.
+def choose_hashtag():
+    """ Modify this function to use return the hashtah #sparkhackathon
     """
-    return requests.get(api_url)
+    return hasthag
