@@ -40,6 +40,7 @@ def choose_number_of_tweets():
     """ Modify this function to return the max number of tweets
     you want to appear on the site at a time!
     """
+    number = 30
     return number
 
 
