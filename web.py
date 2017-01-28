@@ -7,7 +7,7 @@ import os
 import tweepy
 from flask import Flask, render_template
 
-from helpers import choose_number_of_images, choose_number_of_tweets, choose_random_unique_items, get_api_content
+from helpers import choose_number_of_images, choose_number_of_tweets, choose_random_unique_items, choose_hashtag
 
 import settings
 
@@ -62,7 +62,7 @@ def get_tweets():
     auth = tweepy.OAuthHandler(settings.CONSUMER_KEY, settings.CONSUMER_SECRET)
     auth.set_access_token(settings.ACCESS_KEY, settings.ACCESS_SECRET)
     api = tweepy.API(auth)
-    tweets = tweepy.Cursor(api.search, q='#sparkhackathon')
+    tweets = tweepy.Cursor(api.search, q=choose_hashtag())
 
     number_of_tweets = choose_number_of_tweets()
 
