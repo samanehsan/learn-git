@@ -1,5 +1,5 @@
 """ A bunch of helper functions that, when fixed up, will return the things we
-need to make this website work!
+need to make this website work! These functions use the weather and twitter APIs!!!
 """
 
 ## Import python libraries we need up here.
