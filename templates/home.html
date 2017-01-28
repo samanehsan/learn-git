@@ -28,12 +28,21 @@
 			</div>
 
 			<div class="row well">	
-				<h2 style="font-family: Lato" >INSTAGRAM</h2>
-				<div style="text-align:center">
+				<h2 style="font-family: Lato" >WEATHER</h2>
+				<div>
 					<div class="row">
-					{% for p in instagram_pics %}
-						<div class="col-sm-4" style="padding-top: 15px"><a href={{p[0]}}><img src={{p[1]}}></a></div>
-					{% endfor %}
+						<div class="col-md-4">
+							<h3>City:</h3>
+							<h4>{{ weather_data.city }}</h4>
+						</div>
+						<div class="col-md-4">
+							<h3>Description:</h3>
+							<h4>{{ weather_data.description }} <img src={{weather_data.icon }} style="width: {{ weather_data.icon_size }}px"></h4>
+						</div>
+						<div class="col-md-4">
+							<h3>Temperature:</h3>
+							<h4>{{ weather_data.temp }}° F</h4>
+						</div>
 					</div>
 				</div>
 			</div>

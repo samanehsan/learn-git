@@ -7,67 +7,56 @@ import os
 import tweepy
 from flask import Flask, render_template
 
-from helpers import choose_number_of_images, choose_number_of_tweets, choose_random_unique_items, get_api_content
+from helpers import(
+    choose_number_of_tweets,
+    get_api_content,
+    get_city_coordinates,
+    get_icon_size
+)
 
 import settings
 
 app = Flask(__name__)
 
 
-@app.route('/map')
-def map():
-    return render_template('example.html', name='main')
-
-
 @app.route('/')
 def home_page():
-    instagram_pics = get_instagram_images()
+    weather_data = get_weather()
     twitter_pics = get_tweets()
 
     return render_template(
         'home.html', name='main',
-        instagram_pics=instagram_pics,
+        weather_data=weather_data,
         twitter_pics=twitter_pics,
     )
 
-'''
-@app.route('/<hashtag>')
-def hashtag_pages(hashtag):
-    instagram_pics = get_instagram_images(hashtag)
-    twitter_pics = get_tweets(hashtag)
 
+def get_weather():
 
-    return render_template(
-        'home.html', name='main',
-        instagram_pics=instagram_pics,
-        twitter_pics=twitter_pics,
+    lattitude, longitude = get_city_coordinates()
+    icon_size = get_icon_size()
+
+    weather_url = 'http://api.openweathermap.org/data/2.5/weather?units=imperial&lat={}&lon={}&APPID={}'.format(
+        lattitude,
+        longitude,
+        settings.WEATHER_API_KEY
     )
-'''
+    weather_api_data = get_api_content(weather_url).json()
 
-
-def get_instagram_images(hashtag='sparkhackathon'):
-    instagram_api_url = 'https://api.instagram.com/v1/tags/{}/media/recent?client_id={}'.format(hashtag, settings.CLIENT_ID)
-
-    requested_website = get_api_content(instagram_api_url)
-
-    data = requested_website.json()['data']
-    number_of_images = choose_number_of_images()
-
-    images = choose_random_unique_items(data, number_of_images)
-
-    images_returned = []
-    for image in images:
-        image_url = image['images']['low_resolution']['url']
-        images_returned.append((image['link'], image_url))
-
-    return images_returned
+    return {
+        'city': weather_api_data['name'],
+        'temp': weather_api_data['main']['temp'],
+        'description': weather_api_data['weather'][0]['description'],
+        'icon': 'http://openweathermap.org/img/w/{}.png'.format(weather_api_data['weather'][0]['icon']),
+        'icon_size': icon_size
+    }
 
 
 def get_tweets():
     auth = tweepy.OAuthHandler(settings.CONSUMER_KEY, settings.CONSUMER_SECRET)
     auth.set_access_token(settings.ACCESS_KEY, settings.ACCESS_SECRET)
     api = tweepy.API(auth)
-    tweets = tweepy.Cursor(api.search, q='#sparkhackathon')
+    tweets = tweepy.Cursor(api.search, q='#Cvilletech')
 
     number_of_tweets = choose_number_of_tweets()
 

@@ -9,3 +9,5 @@ ACCESS_SECRET = os.environ['ACCESS_SECRET']
 
 #Instagram
 CLIENT_ID = os.environ['CLIENT_ID']
+
+WEATHER_API_KEY = os.environ['WEATHER_API_KEY']
