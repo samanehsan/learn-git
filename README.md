@@ -2,7 +2,7 @@
 
 
 ### Description
-During this workshop, you will learn the basics of git, a widely used version control system. After a basic introduction to the command line, you will learn how to create a git repository, keep track of your work, and use GitHub to collaborate with others. Then, you will use git to collaboratively write a script that collects SPARK social media posts!
+During this workshop, you will learn the basics of git, a widely used version control system. After a basic introduction to the command line, you will learn how to create a git repository, keep track of your work, and use GitHub to collaborate with others. Then, you will use git to collaboratively write a script that collects social media posts!
 
 ### Learning Objectives:
 
