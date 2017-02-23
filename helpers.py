@@ -2,16 +2,13 @@
 need to make this website work! These functions use the weather and twitter APIs!!!
 """
 
-## Import python libraries we need up here.
-
-
 
 ###############################################
 ###             Problem One!                ###
 ###############################################
 
 def get_city_coordinates():
-    """Find the GPS coordinates for Charlottesville,
+    """Find the GPS coordinates for here,
     and fill in the information below
     """
     lattitude = ???
@@ -24,9 +21,7 @@ def get_city_coordinates():
 ###############################################
 
 def get_icon_size():
-    """ Modify this function to return a number of instagram photos
-    you want to appear on the site at a time! Because of how the instagram API works,
-    it won't return more than 20 photos at once.
+    """ Choose a number of pixels to represent the size of the weather pic.
     """
     size = ???
     return size
@@ -40,6 +35,7 @@ def choose_number_of_tweets():
     """ Modify this function to return the max number of tweets
     you want to appear on the site at a time!
     """
+    number = ???
     return number
 
 
@@ -48,6 +44,7 @@ def choose_number_of_tweets():
 ###############################################
 
 def choose_hashtag():
-    """ Modify this function to use return the hashtah #sparkhackathon
+    """ Modify this function to return the hashtag #capwic2017
     """
+    hashtag = ''
     return hashtag
