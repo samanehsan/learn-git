@@ -23,7 +23,7 @@ def get_city_coordinates():
 def get_icon_size():
     """ Choose a number of pixels to represent the size of the weather pic.
     """
-    size = ???
+    size = 2
     return size
 
 
@@ -35,7 +35,7 @@ def choose_number_of_tweets():
     """ Modify this function to return the max number of tweets
     you want to appear on the site at a time!
     """
-    number = ???
+    number = 3
     return number
 
 
