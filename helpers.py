@@ -11,8 +11,8 @@ def get_city_coordinates():
     """Find the GPS coordinates for here,
     and fill in the information below
     """
-    lattitude = ???
-    longitude = ???
+    lattitude = 38.9095396
+    longitude = -77.0757553
 
     return lattitude, longitude
 
