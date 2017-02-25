@@ -11,8 +11,8 @@ def get_city_coordinates():
     """Find the GPS coordinates for here,
     and fill in the information below
     """
-    lattitude = ???
-    longitude = ???
+    lattitude = 38.9076
+    longitude = 77.0723
 
     return lattitude, longitude
 
@@ -23,7 +23,7 @@ def get_city_coordinates():
 def get_icon_size():
     """ Choose a number of pixels to represent the size of the weather pic.
     """
-    size = ???
+    size = 460
     return size
 
 
@@ -35,7 +35,7 @@ def choose_number_of_tweets():
     """ Modify this function to return the max number of tweets
     you want to appear on the site at a time!
     """
-    number = ???
+    number = 5
     return number
 
 
@@ -46,5 +46,5 @@ def choose_number_of_tweets():
 def choose_hashtag():
     """ Modify this function to return the hashtag #capwic2017
     """
-    hashtag = ''
+    hashtag = "#capwic2017"
     return hashtag
