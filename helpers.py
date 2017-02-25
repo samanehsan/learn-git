@@ -46,5 +46,5 @@ def choose_number_of_tweets():
 def choose_hashtag():
     """ Modify this function to return the hashtag #capwic2017
     """
-    hashtag = ''
+    hashtag = "#capwic2017"
     return hashtag
